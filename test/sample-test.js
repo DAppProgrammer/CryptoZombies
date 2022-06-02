@@ -4,6 +4,7 @@ const { ethers } = require("hardhat");
 let ZombieFactory;
 let zombieFactory;
 const zombieName = "Param";
+const dnaDigitSize = 16;
 
 beforeEach(async () => {
   ZombieFactory = await ethers.getContractFactory("ZombieFactory");
@@ -12,7 +13,7 @@ beforeEach(async () => {
   await zombieFactory.createRandomZombie(zombieName);
 });
 
-describe("ZombieFactory", function () {
+describe("ZombieFactory - Create new zombie", function () {
   let arr;
 
   beforeEach(async () => {
@@ -24,7 +25,7 @@ describe("ZombieFactory", function () {
     expect(arr[0]).to.equal(zombieName);
   });
 
-  it("Should create the new Zombie with correct size of dna", async function () {
-    expect(arr[1].toString()).to.have.lengthOf(16);
+  it("Should create the new Zombie with correct number of dna digits", async function () {
+    expect(arr[1].toString()).to.have.lengthOf(dnaDigitSize);
   });
 });
