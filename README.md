@@ -13,3 +13,5 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+address CryptoKitties = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;

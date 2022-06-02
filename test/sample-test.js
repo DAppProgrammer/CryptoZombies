@@ -10,7 +10,6 @@ beforeEach(async () => {
   ZombieFactory = await ethers.getContractFactory("ZombieFactory");
   zombieFactory = await ZombieFactory.deploy();
   await zombieFactory.deployed();
-  await zombieFactory.createRandomZombie(zombieName);
 });
 
 describe("ZombieFactory - Create new zombie", function () {
