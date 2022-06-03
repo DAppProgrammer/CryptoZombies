@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./ZombieFactory.sol";
 
 contract KittyInterface {
-    function getKitty(uint256 _id)
+    function  getKitty(uint256 _id)
         external
         view
         returns (
@@ -18,8 +18,7 @@ contract KittyInterface {
             uint256 sireId,
             uint256 generation,
             uint256 genes
-        )
-    {}
+        ){}
 }
 
 contract ZombieFeeding is ZombieFactory {
@@ -47,9 +46,9 @@ contract ZombieFeeding is ZombieFactory {
         _createZombie("NoName", newDna);
     }
 
-    function feedOnKitty(uint256 _zombieId, uint256 _kittyId) public {
-        uint256 kittyDna;
-        (, , , , , , , , , kittyDna) = kittyContract.getKitty(_kittyId);
-        feedAndMultiply(_zombieId, kittyDna, "kitty");
+    function feedOnKitty(uint256 _zombieId, uint256 _kittyId) public  {
+        uint256 genes;
+        (, , , , , , , , , genes) = kittyContract.getKitty(_kittyId);
+        feedAndMultiply(_zombieId, genes, "kitty");
     }
 }
