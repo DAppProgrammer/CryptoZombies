@@ -13,7 +13,6 @@ beforeEach(async () => {
   const cryptoKitties = await CryptoKitties.deploy();
   await cryptoKitties.deployed();
   kittyContractAddress = cryptoKitties.address;
-  console.log(kittyContractAddress);
 
   ZombieFeeding = await ethers.getContractFactory("ZombieFeeding");
   zombieFeeding = await ZombieFeeding.deploy();
@@ -45,10 +44,8 @@ describe("ZombieFeeding - Creates new zombie", () => {
 
   it("Should create a new Zombie after feeding it kitty", async () => {
     const [owner] = await ethers.getSigners();
-
     let count = await zombieFeeding.ownerZombieCount(owner.address);
     await zombieFeeding.feedOnKitty(count - 1, 0);
     count = await zombieFeeding.ownerZombieCount(owner.address);
-    console.log("count", count);
   });
 });
