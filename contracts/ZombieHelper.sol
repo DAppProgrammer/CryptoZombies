@@ -6,11 +6,6 @@ import "./ZombieFeeding.sol";
 contract ZombieHelper is ZombieFeeding {
     uint256 levelUpFee = 0.001 ether;
 
-    modifier ownerOf(uint256 _zombieId) {
-        require(zombieToOwner[_zombieId] == msg.sender);
-        _;
-    }
-
     modifier aboveLevel(uint256 _level, uint256 _zombieId) {
         require(zombies[_zombieId].level >= _level);
         _;
@@ -33,7 +28,7 @@ contract ZombieHelper is ZombieFeeding {
     function changeName(uint256 _zombieId, string calldata _newName)
         external
         aboveLevel(2, _zombieId)
-        ownerOf(_zombieId)
+        onlyOwnerOf(_zombieId)
     {
         zombies[_zombieId].name = _newName;
     }
@@ -41,7 +36,7 @@ contract ZombieHelper is ZombieFeeding {
     function changeDna(uint256 _zombieId, uint256 _newDna)
         external
         aboveLevel(20, _zombieId)
-        ownerOf(_zombieId)
+        onlyOwnerOf(_zombieId)
     {
         zombies[_zombieId].dna = _newDna;
     }
